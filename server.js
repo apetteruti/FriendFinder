@@ -12,34 +12,7 @@ var PORT = process.env.PORT || 3000;
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-//variables for the potential nerds
-var nerds = [
-    {
-        routeName = "velma",
-        name = "Velma",
-        nerdPoints = 25
-    },
-    {
-        routeName = "shaggy",
-        name = "Shaggy",
-        nerdPoints = 20
-    },
-    {
-        routeName = "scooby",
-        name = "Scooby",
-        nerdPoints = 15
-    },
-    {
-        routeName = "daphne",
-        name = "Daphne",
-        nerdPoints = 10
-    },
-    {
-        routeName = "fred",
-        name = "Fred",
-        nerdPoints = 5
-    }
-]
+
 
 //ROUTES
 //Basic route that directs to home page
