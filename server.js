@@ -12,8 +12,11 @@ var PORT = process.env.PORT || 3000;
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+// Add the application routes
+require(path.join(__dirname, './app/routing/apiRoutes'))(app);
+require(path.join(__dirname, './app/routing/htmlRoutes'))(app);
 
-  
+
   // Starts the server to begin listening
   // =============================================================
   app.listen(PORT, function() {
@@ -21,8 +24,6 @@ app.use(express.json());
   });
   
 
-
-//Displays the object property information - this probably needs to go inside the other posting lines
 
 
  
