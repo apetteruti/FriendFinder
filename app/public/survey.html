@@ -168,7 +168,7 @@
             var q10 = $('input[name=q10]:checked').val();
             var q10Int = parseInt(q10);
 
-            var newNerdScore = (q1Int + q2Int + q3Int + q4Int + q5Int + q6Int + q7Int + q8Int + q9Int + q10Int);
+            var newNerdScore = parseInt(q1Int + q2Int + q3Int + q4Int + q5Int + q6Int + q7Int + q8Int + q9Int + q10Int);
 
             var newNerd = {
                 name: $("#name").val().trim(),
@@ -187,15 +187,13 @@
         });
 
         //get the matched data back from api/friends
-        $('#modal').on('shown.bs.modal', function () {
 
             $.get("api/friends", function (req, res) {
                 $("#matchedFriend").html(data.matchName);
                 $("#matchedPicture").attr("src", data.matchPhoto);
 
-                //add it to the modal and trigger it
             })
-        })
+
     </script>
 
     <!-- Linking to our JavaScript file. -->
