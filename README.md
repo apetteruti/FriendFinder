@@ -7,12 +7,12 @@ The application takes in the users answers to the 10 questions on a 1-5 scale, a
 The application posts the responses from the survey to api/friends after the comparison detailed above, the application then gets the results to display in a modal that appears over the survey page.
 
 ##Online Use
-Navigate [here] (https://......) and and follow the prompts. 
+Navigate [here] ( https://limitless-harbor-49637.herokuapp.com) and and follow the prompts. 
 
-![Screen shot](app/public/images/SS1.png)
+![Screen shot](app/public/home.png)
 Index Page
 
-![Screen shot 2](app/public/images/SS2.png)
+![Screen shot 2](app/public/survey.png)
 Survey
 
 ##Utilities Used
