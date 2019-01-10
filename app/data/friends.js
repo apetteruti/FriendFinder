@@ -31,3 +31,5 @@ var friends = [
         nerdPoints: 10
     }
 ]
+
+module.exports = friends;

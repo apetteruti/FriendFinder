@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Friend Finder - Nerd Version</title>
+    <title>Friend Finder</title>
     <!-- Latest compiled and minified CSS & JS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -13,8 +13,8 @@
 </head>
 
 <body>
-    <div class="container">
-
+    <div class="container mt-2">
+        <div class = "section">
 
         <form>
 
@@ -120,6 +120,28 @@
 
         </form>
     </div>
+    </div>
+
+    <div class="modal" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id = "matchedFriend"></h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <img id = "matchedPicture">
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
     <script type="text/javascript">
         $("#submit").on("click", function (event) {
                     event.preventDefault();
@@ -155,14 +177,25 @@
                     }
                     console.log(newNerd);
 
-
-                    $.post("/api/nerds", newNerd)
+                    //post the collected data to api/friends
+                    $.post("/api/friends", newNerd)
                     .then(function(data){
                     console.log(data);
                     alert("Finding appropriately nerdy friend...");
                     })
 
                     });
+
+                    //get the matched data back from api/friends
+                    $('#modal').on('shown.bs.modal', function () {
+
+                    $.get("api/friends", function(req,res){
+                        $("#matchedFriend").html(data.matchName);
+                        $("#matchedPicture").attr("src",data.matchPhoto);
+
+                        //add it to the modal and trigger it
+                    })
+                    })
     </script>
 
     <!-- Linking to our JavaScript file. -->
