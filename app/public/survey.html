@@ -111,10 +111,48 @@
 
     </form>
 </div>
+<script type="text/javascript">
+
+$("#submit").on("click", function(event){
+    event.preventDefault();
+    
+    //create variables to collect each value
+    var q1 = $('input[name=q1]:checked').val();
+    var q1Int = parseInt(q1);
+    var q2 = $('input[name=q2]:checked').val();
+    var q2Int = parseInt(q2);
+    var q3 = $('input[name=q3]:checked').val();
+    var q3Int = parseInt(q3);
+    var q4 = $('input[name=q4]:checked').val();
+    var q4Int = parseInt(q4);
+    var q5 = $('input[name=q5]:checked').val();
+    var q5Int = parseInt(q5);
+    var q6 = $('input[name=q6]:checked').val();
+    var q6Int = parseInt(q6);
+    var q7 = $('input[name=q7]:checked').val();
+    var q7Int = parseInt(q7);
+    var q8 = $('input[name=q8]:checked').val();
+    var q8Int = parseInt(q8);
+    var q9 = $('input[name=q9]:checked').val();
+    var q9Int = parseInt(q9);
+    var q10 = $('input[name=q10]:checked').val();
+    var q10Int = parseInt(q10);
+    
+    var newNerd = (q1Int + q2Int + q3Int + q4Int + q5Int+q6Int + q7Int + q8Int + q9Int + q10Int);
+    
+    
+    $.post("/api/nerds", newNerd)
+    .then(function(data){
+    console.log(data);
+    alert("Finding appropriately nerdy friend...");
+    })
+    
+    });
+</script>
 
     <!-- Linking to our JavaScript file. -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script type="text/javascript" src="app.js"></script>
+
 </body>
 
 </html>
