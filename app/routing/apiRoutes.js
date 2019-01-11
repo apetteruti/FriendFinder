@@ -38,93 +38,84 @@ module.exports = function (app) {
 
         friends.push(newNerd);
 
-        res.json(newNerd);
-
         console.log(newNerd.nerdScore);
 
         //post the matched friends
         var matchName = "";
         var matchPhoto = "";
 
+        //creates proxy variables for the user nerdScore
+
+        if (newNerd.nerdScore < 13) {
+            var newNerdScore10 = 10;
+        } else if (newNerd.nerdScore > 12 && newNerd.nerdScore < 23) {
+            var newNerdScore20 = 20;
+        } else if (newNerd.nerdScore > 22 && newNerd.nerdScore < 33) {
+            var newNerdScore30 = 30;
+        } else if (newNerd.nerdScore > 32 && newNerd.nerdScore < 43) {
+            var newNerdScore40 = 40;
+        } else {
+            var newNerdScore50 = 50;
+        }
+
         for (var i = 0; i < friends.length; i++) {
             // console.log('friend = ' + JSON.stringify(friends[i].nerdScore))
             // compare newFriend data to the properties in the objects above
 
-            if (friends[i].nerdScore == 10) {
+            if (friends[i].nerdScore == newNerdScore10) {
                 // var fred = function() {
-                    // var fred = JSON.stringify(friends[i].name);
-                    matchName = friends[i].name;
-                    console.log (matchName);
-                    matchPhoto = friends[i].photo
-                    console.log (matchPhoto);
-                    // console.log(fred);  
+                // var fred = JSON.stringify(friends[i].name);
+                matchName = friends[i].name;
+                console.log(matchName);
+                matchPhoto = friends[i].photo
+                console.log(matchPhoto);
+                // console.log(fred);  
                 // }
 
-            } else if (friends[i].nerdScore == 20) {
+            } else if (friends[i].nerdScore == newNerdScore20) {
                 // console.log(daphne);
-                function daphne() {
-                    // var daphne = JSON.stringify(friends[i].name);
-                    matchName = JSON.stringify(friends[i].name)
-                    matchPhoto = (friends[i].photo)
+                // var daphne = JSON.stringify(friends[i].name);
+                matchName = friends[i].name;
+                console.log(matchName);
+                matchPhoto = friends[i].photo
+                console.log(matchPhoto);
 
-                }
 
-            } else if (friends[i].nerdScore == 30) {
+            } else if (friends[i].nerdScore == newNerdScore30) {
                 // var scooby = JSON.stringify(friends[i].name);
                 // console.log(scooby);
-                function scooby() {
-                    matchName = JSON.stringify(friends[i].name)
-                    matchPhoto = (friends[i].photo)
-                }
+                matchName = friends[i].name;
+                console.log(matchName);
+                matchPhoto = friends[i].photo
+                console.log(matchPhoto);
 
-            } else if (friends[i].nerdScore == 40) {
+            } else if (friends[i].nerdScore == newNerdScore40) {
                 // var shaggy = JSON.stringify(friends[i].name)
                 // console.log(shaggy);
-                function shaggy() {
-                    matchName = JSON.stringify(friends[i].name)
-                    matchPhoto = (friends[i].photo)
-                }
+                matchName = friends[i].name;
+                console.log(matchName);
+                matchPhoto = friends[i].photo
+                console.log(matchPhoto);
 
-            } else if (friends[i].nerdScore == 50) {
+            } else if (friends[i].nerdScore == newNerdScore50) {
                 // var velma = JSON.stringify(friends[i].name)
                 // console.log(velma);
-                function velma() {
-                    matchName = JSON.stringify(friends[i].name)
-                    matchPhoto = (friends[i].photo)
-                }
+                matchName = friends[i].name;
+                console.log(matchName);
+                matchPhoto = friends[i].photo
+                console.log(matchPhoto);
             }
 
-            function matchFriend() {
+        }
 
-                if (newNerd.nerdScore < 13) {
-                    // console.log(fred);
-                    // fred();
+        newNerd.matchName = matchName;
+        newNerd.matchPhoto = matchPhoto;
+        console.log(newNerd);
 
-                } else if (newNerd.nerdScore > 12 && newNerd.nerdScore < 23) {
-                    // console.log(daphne);
-                    daphne();
-
-                } else if (newNerd.nerdScore > 22 && newNerd.nerdScore < 33) {
-                    // console.log(scooby);
-                    scooby();
-
-                } else if (newNerd.nerdScore > 32 && newNerd.nerdScore < 43) {
-                    // console.log(shaggy);
-                    shaggy();
-
-                } else {
-                    // console.log(velma);
-                    velma();
-                }
-            }
-
-        };
-
-        //runs the matchFriend function to compare the nerdScore list to the user input
-        matchFriend();
         //attempting to get matchName out of the apiRoute
-        res.json(matchName);
-        res.json(matchPhoto);
+        // res.json(matchName);
+        // res.json(matchPhoto);
+        res.json({newNerd: newNerd});
 
     });
 }

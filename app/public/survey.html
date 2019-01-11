@@ -119,10 +119,13 @@
             <br>
 
             </form>
+            <!-- <div id="matchedFriend"> </div>
+            <div class = "row"><img id="matchedPicture"></div> -->
         </div>
     </div>
 
-    <div class="modal" tabindex="-1" role="dialog">
+<!-- Modal that doesn't work -->
+    <div class="modal" id = "myModal" tabindex="-1" role="dialog">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -132,7 +135,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <img id="matchedPicture">
+                    <img class =  id="matchedPicture">
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -168,7 +171,8 @@
             var q10 = $('input[name=q10]:checked').val();
             var q10Int = parseInt(q10);
 
-            var newNerdScore = parseInt(q1Int + q2Int + q3Int + q4Int + q5Int + q6Int + q7Int + q8Int + q9Int + q10Int);
+            var newNerdScore = parseInt(q1Int + q2Int + q3Int + q4Int + q5Int + q6Int + q7Int + q8Int + q9Int +
+                q10Int);
 
             var newNerd = {
                 name: $("#name").val().trim(),
@@ -176,28 +180,21 @@
                 nerdScore: newNerdScore
             }
             console.log(newNerd);
+            alert("Finding appropriately nerdy friend...");
 
             //post the collected data to api/friends
             $.post("/api/friends", newNerd)
-                .then(function (data) {
-                    alert("Finding appropriately nerdy friend...");
+                .done(function (data) {
                     console.log(data);
+                    $("#matchedFriend").text(data.newNerd.matchName);
+                    $("#matchedPicture").attr("src", data.newNerd.matchPhoto);
+                    $('#myModal').modal("show");
                 })
-
         });
-
-        //get the matched data back from api/friends
-
-            $.get("api/friends", function (req, res) {
-                $("#matchedFriend").html(data.matchName);
-                $("#matchedPicture").attr("src", data.matchPhoto);
-
-            })
 
     </script>
 
-    <!-- Linking to our JavaScript file. -->
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
 
 </body>
 
